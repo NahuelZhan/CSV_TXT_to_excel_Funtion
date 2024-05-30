@@ -12,6 +12,7 @@ import pandas as pd
 import csv
 from openpyxl import load_workbook
 
+file_path = "C:/Users/RD-08/Desktop/test_ui/dist/UIcontroller/turn.xlsx"
 
 
 
@@ -30,6 +31,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.Open2.clicked.connect(self.buttonClicked2)
         self.ui.Cancel.clicked.connect(self.Cancel)
         self.ui.OK.clicked.connect(self.OK)
+        self.ui.Clear.clicked.connect(self.Clear)
         
         
     def buttonClicked(self):
@@ -183,6 +185,44 @@ class MainWindow(QtWidgets.QMainWindow):
         # 儲存工作簿
         wb.save('turn.xlsx')                 
                 
+        # 使用預設的應用程式開啟檔案
+        os.system(f'start turn.xlsx "{file_path}"')
+
+
+
+
+    def Clear(self):
+        # 載入現有的Excel工作簿
+        wb = load_workbook('turn.xlsx')
+        ws = wb['工作表1']  # 替換成你的工作表名稱        
+        wb.save('turn.xlsx')
+
+
+        # 載入Excel檔案
+        wb = load_workbook('C:/Users/RD-08/Desktop/test_ui/dist/UIcontroller/turn.xlsx')
+        ws = wb.active  # 或者 wb['Sheet1'] 如果您知道工作表的名稱
+
+        # 清除第列的資料
+        for row in ws.iter_rows(min_col=1, max_col=1, min_row=1, max_row=ws.max_row):
+            for cell in row:
+                cell.value = None
+        
+        # 清除第列的資料
+        for row in ws.iter_rows(min_col=5, max_col=5, min_row=1, max_row=ws.max_row):
+            for cell in row:
+                cell.value = None
+
+        # 清除第列的資料
+        for row in ws.iter_rows(min_col=6, max_col=6, min_row=1, max_row=ws.max_row):
+            for cell in row:
+                cell.value = None        
+        
+
+        # 儲存變更
+        wb.save('C:/Users/RD-08/Desktop/test_ui/dist/UIcontroller/turn.xlsx')
+
+
+
 
 
 
