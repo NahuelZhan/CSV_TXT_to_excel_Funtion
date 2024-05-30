@@ -108,19 +108,13 @@ class MainWindow(QtWidgets.QMainWindow):
         wb = load_workbook('turn.xlsx')
         ws = wb['工作表1']  # 替換成你的工作表名稱
 
-        # 從第二行開始寫入數據（假設第一行是標題行）
+        
         for index, row in df.iterrows():
-            ws.cell(row=index+1, column=1, value=str(row[0]))  # 假設你想寫入第一列
+            ws.cell(row=index+1, column=1, value=str(row[0]))  # 寫入第一列
 
-        # 儲存工作簿
+       
         wb.save('turn.xlsx')                
-                
-                
-                
-                
-                
-                
-                
+                 
                 
         with open(self.file_name2, 'r',  encoding='utf-8') as bbb:            
             rread = bbb.readlines()
@@ -136,7 +130,7 @@ class MainWindow(QtWidgets.QMainWindow):
                 file.write(line + '\n')
                 
         # 讀取txt檔案
-        df = pd.read_csv('S1.txt', header=None, dtype=str)  # 假設txt檔案沒有標題行
+        df = pd.read_csv('S1.txt', header=None, dtype=str)  #txt檔案沒有標題行
 
         # 將文字轉換為數值，這裡假設所有數據都可以轉換
         df = df.apply(pd.to_numeric, errors='coerce')
@@ -145,9 +139,9 @@ class MainWindow(QtWidgets.QMainWindow):
         wb = load_workbook('turn.xlsx')
         ws = wb['工作表1']  # 替換成你的工作表名稱
 
-        # 從第二行開始寫入數據（假設第一行是標題行）
+        # 從第二行開始寫入數據
         for index, row in df.iterrows():
-            ws.cell(row=index+1, column=5, value=str(row[0]))  # 假設你想寫入第一列
+            ws.cell(row=index+1, column=5, value=str(row[0]))  # 假設你想寫入第五列
 
         # 儲存工作簿
         wb.save('turn.xlsx')                 
@@ -182,9 +176,9 @@ class MainWindow(QtWidgets.QMainWindow):
         wb = load_workbook('turn.xlsx')
         ws = wb['工作表1']  # 替換成你的工作表名稱
 
-        # 從第二行開始寫入數據（假設第一行是標題行）
+        # 從第二行開始寫入數據
         for index, row in df.iterrows():
-            ws.cell(row=index+1, column=6, value=str(row[0]))  # 假設你想寫入第一列
+            ws.cell(row=index+1, column=6, value=str(row[0]))  # 假設你想寫入第六列
 
         # 儲存工作簿
         wb.save('turn.xlsx')                 
